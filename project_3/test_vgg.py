@@ -16,7 +16,7 @@ from keras.models import Model, load_model
 from keras.utils.np_utils import to_categorical
 
 path = os.getcwd()
-TEST_DIR = path + '/Data/Test'#'../data/test'  # TODO
+TEST_DIR = '../images/'#'../data/test'  # TODO
 MODEL_PATH = path + '/model.h5'#'/home/ec2-user/vgg16_new_version_weights.h5'  # TODO
 IMG_H, IMG_W, NUM_CHANNELS = 224, 224, 3
 MEAN_PIXEL = np.array([104., 117., 123.]).reshape((1, 1, 3))
@@ -55,8 +55,8 @@ def main():
     print ('Load test data:')
     X_test, Y_test = load_data(TEST_DIR)
     # TODO: get accuracy
-    hist = model.fit(X_test, Y_test, validation_split=0.2)
-    print(hist.history)
+    hist = model.evaluate(x=X_test, y=Y_test)
+    print(hist)
 
     return
 
